@@ -467,7 +467,7 @@ export default function About() {
               {/* Contact Button */}
               <Link 
                 href="/contact" 
-                className="group relative inline-flex px-8 py-4 rounded-xl font-semibold text-lg bg-primary text-white hover:bg-primary/90 transition-all duration-300 hover:scale-[1.02] hover:shadow-md active:scale-[0.98]"
+                className="group relative inline-flex px-8 py-4 rounded-xl font-semibold text-lg bg-primary text-black hover:bg-primary/90 transition-all duration-300 hover:scale-[1.02] hover:shadow-md active:scale-[0.98]"
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   Join Our Mission
