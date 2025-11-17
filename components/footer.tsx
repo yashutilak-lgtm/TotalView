@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Logo } from "./logo" // Assuming Logo component exists and is stylish
+import { Logo } from "./logo"
 import { Mail, Phone, MapPin, Twitter, Linkedin, Github, Zap } from "lucide-react"
 
 export function Footer() {
@@ -36,6 +36,28 @@ export function Footer() {
     },
   ]
 
+  // Social Media Links - UPDATE THESE WITH YOUR ACTUAL URLS
+  const socialLinks = [
+    {
+      name: "LinkedIn",
+      icon: Linkedin,
+      url: "https://linkedin.com/company/your-company-name", // CHANGE THIS
+      ariaLabel: "LinkedIn"
+    },
+    {
+      name: "Twitter",
+      icon: Twitter,
+      url: "https://twitter.com/your-handle", // CHANGE THIS
+      ariaLabel: "Twitter"
+    },
+    {
+      name: "GitHub",
+      icon: Github,
+      url: "https://github.com/your-username", // CHANGE THIS
+      ariaLabel: "GitHub"
+    }
+  ]
+
   return (
     // Updated footer styling for a premium look
     <footer className="bg-background border-t border-border/50 pt-20">
@@ -51,15 +73,21 @@ export function Footer() {
               Empowering businesses with intelligent, real-time analytics to unlock total data visibility and drive growth.
             </p>
             <div className="flex space-x-4 pt-2">
-                <a href="#" aria-label="LinkedIn" className="text-muted-foreground hover:text-accent transition-colors">
-                    <Linkedin className="w-5 h-5" />
-                </a>
-                <a href="#" aria-label="Twitter" className="text-muted-foreground hover:text-accent transition-colors">
-                    <Twitter className="w-5 h-5" />
-                </a>
-                <a href="#" aria-label="GitHub" className="text-muted-foreground hover:text-accent transition-colors">
-                    <Github className="w-5 h-5" />
-                </a>
+              {socialLinks.map((social, index) => {
+                const Icon = social.icon
+                return (
+                  <a
+                    key={index}
+                    href={social.url}
+                    aria-label={social.ariaLabel}
+                    className="text-muted-foreground hover:text-accent transition-colors duration-300 hover:scale-110"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Icon className="w-5 h-5" />
+                  </a>
+                )
+              })}
             </div>
           </div>
 
