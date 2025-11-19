@@ -8,7 +8,7 @@ import { Footer } from "@/components/footer"
 
 export default function Services() {
   const [hasAnimated, setHasAnimated] = useState(false)
-  const [expandedService, setExpandedService] = useState<number | null>(0)
+  const [expandedService, setExpandedService] = useState<number | null>(null)
 
   useEffect(() => {
     setHasAnimated(true)
@@ -175,6 +175,19 @@ export default function Services() {
 
       {/* Services Grid with Expandable Cards */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 relative bg-muted/30">
+        <style jsx>{`
+          @keyframes pulse-highlight {
+            0%, 100% {
+              box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+            }
+            50% {
+              box-shadow: 0 0 0 8px rgba(59, 130, 246, 0);
+            }
+          }
+          .animate-pulse-highlight {
+            animation: pulse-highlight 2s infinite;
+          }
+        `}</style>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-foreground">
@@ -213,10 +226,12 @@ export default function Services() {
                     </div>
                   </div>
 
-                  {/* Expand Button */}
+                  {/* Expand Button with Pulse Highlight */}
                   <button
                     onClick={() => setExpandedService(expandedService === index ? null : index)}
-                    className="w-full mt-4 flex items-center justify-between px-4 py-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors text-sm font-medium text-foreground"
+                    className={`w-full mt-4 flex items-center justify-between px-4 py-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors text-sm font-medium text-foreground ${
+                      expandedService === null ? "animate-pulse-highlight" : ""
+                    }`}
                   >
                     <span>View All Capabilities</span>
                     <ChevronDown
@@ -313,12 +328,11 @@ export default function Services() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/contact" className="group relative inline-flex px-8 py-4 rounded-xl font-semibold text-lg bg-gradient-to-r from-primary to-accent text-black overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/50 active:scale-95">
+                <Link href="/contact" className="group relative inline-flex px-8 py-4 rounded-xl font-semibold text-lg bg-primary text-white hover:bg-primary/90 transition-all duration-300 hover:scale-105 hover:shadow-md active:scale-95">
                   <span className="relative z-10 flex items-center justify-center gap-2">
                     Get Started Today
                     <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                   </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </Link>
                 
                 <Link href="/pricing" className="inline-flex px-8 py-4 rounded-xl font-semibold text-lg border-2 border-primary text-primary hover:bg-primary/10 transition-all duration-300 hover:scale-105 active:scale-95">
